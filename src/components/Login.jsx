@@ -1,27 +1,33 @@
 import React, { useState } from "react";
 
 const Login = ({ isLoggedIn, onLogin }) => {
-  const [username, setUsername] = useState("");
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
 
   if (isLoggedIn) {
-    return <h2>You are logged in!</h2>;
+    return <p>You are logged in!</p>;
   }
 
   return (
     <div>
-      <h2>Login Form</h2>
-
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          onLogin(); 
+          onLogin();  // no username required
         }}
       >
+        <label>Username:</label>
         <input
           type="text"
-          placeholder="Enter Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={user}
+          onChange={(e) => setUser(e.target.value)}
+        />
+
+        <label>Password:</label>
+        <input
+          type="password"
+          value={pass}
+          onChange={(e) => setPass(e.target.value)}
         />
 
         <button type="submit">Login</button>
